@@ -59,6 +59,7 @@ FastSign/
 
 ## Setup Instructions
 
+### Standard Setup
 1. **Prerequisites**
    - Python 3.8+
    - MySQL (via Laragon)
@@ -100,6 +101,31 @@ FastSign/
    ```bash
    uvicorn app.main:app --reload
    ```
+
+### Docker Setup
+
+1. **Prerequisites**
+   - Docker
+   - Docker Compose
+
+2. **Build and Run**
+   ```bash
+   # Build and start containers
+   docker-compose up --build
+
+   # Run in background
+   docker-compose up -d
+   ```
+
+3. **Stop Containers**
+   ```bash
+   docker-compose down
+   ```
+
+The application will be available at:
+- API: http://localhost:8000
+- Documentation: http://localhost:8000/docs
+- MySQL: localhost:3306
 
 ## Development
 
