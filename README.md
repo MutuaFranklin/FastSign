@@ -18,4 +18,112 @@ FastSign allows users to:
 - **File Processing**: PyPDF2, Pillow
 - **Development Environment**: Laragon
 
-## Project Structure 
+## Project Structure
+FastSign/
+├── app/
+│ ├── models/
+│ │ ├── user.py # User authentication and profile
+│ │ ├── document.py # Document management
+│ │ └── signature.py # Digital signatures
+│ ├── routers/
+│ │ ├── auth.py # Authentication routes
+│ │ ├── documents.py # Document handling
+│ │ └── signatures.py # Signature operations
+│ ├── services/
+│ │ └── auth.py # Authentication logic
+│ ├── schemas/
+│ │ ├── user.py # User data validation
+│ │ └── document.py # Document data validation
+│ ├── database.py # Database configuration
+│ ├── config.py # Application settings
+│ └── main.py # Application entry point
+├── requirements.txt
+├── .env
+└── README.md
+```
+
+## API Endpoints
+
+### Authentication
+- `POST /auth/signup` - Create new user account
+- `POST /auth/token` - Login and get access token
+
+### Documents
+- `POST /documents/upload` - Upload new document
+- `GET /documents/list` - List user's documents
+- `GET /documents/public/{access_token}` - Access document via public link
+
+### Signatures
+- `POST /signatures/create` - Create new signature
+- `GET /signatures/list` - List user's signatures
+
+## Setup Instructions
+
+1. **Prerequisites**
+   - Python 3.8+
+   - MySQL (via Laragon)
+   - Git
+
+2. **Clone Repository**
+   ```bash
+   git clone <repository-url>
+   cd FastSign
+   ```
+
+3. **Virtual Environment**
+   ```bash
+   python -m venv venv
+   venv\Scripts\activate  # Windows
+   source venv/bin/activate  # Linux/Mac
+   ```
+
+4. **Install Dependencies**
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+5. **Database Setup**
+   ```sql
+   CREATE DATABASE fastsign;
+   ```
+
+6. **Environment Configuration**
+   Create `.env` file:
+   ```
+   SECRET_KEY=your-secret-key-here
+   ALGORITHM=HS256
+   ACCESS_TOKEN_EXPIRE_MINUTES=30
+   DATABASE_URL=mysql://root@localhost:3306/fastsign
+   ```
+
+7. **Run Application**
+   ```bash
+   uvicorn app.main:app --reload
+   ```
+
+## Development
+
+- API Documentation: http://localhost:8000/docs
+- Database tables are auto-created on first run
+- JWT tokens required for protected endpoints
+- File uploads stored in local filesystem
+
+## Security Features
+
+- Password hashing with bcrypt
+- JWT-based authentication
+- Document access tokens
+- SQL injection protection via SQLAlchemy
+- CORS middleware enabled
+
+## Contributing
+
+1. Fork the repository
+2. Create feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit changes (`git commit -m 'Add AmazingFeature'`)
+4. Push to branch (`git push origin feature/AmazingFeature`)
+5. Open Pull Request
+
+## License
+
+MIT License
