@@ -8,6 +8,7 @@ class UserBase(BaseModel):
 
 class UserCreate(UserBase):
     password: str
+    confirm_password: str
 
 class UserResponse(UserBase):
     id: int
