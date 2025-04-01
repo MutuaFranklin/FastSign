@@ -13,7 +13,7 @@ class Document(Base):
     access_token = Column(String(100), unique=True, index=True)  # For public access
     user_id = Column(Integer, ForeignKey("users.id"))
     created_at = Column(DateTime, default=datetime.now)
-    signed_at = Column(DateTime, nullable=True)
+    signed_at = Column(DateTime, nullable=True)  # This field tracks when the document was signed
 
     # Add relationship
     user = relationship("User", back_populates="documents")

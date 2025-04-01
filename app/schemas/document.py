@@ -13,6 +13,8 @@ class DocumentResponse(DocumentBase):
     access_token: str
     created_at: datetime
     signed_at: Optional[datetime] = None
+    file_link: str
+    signed_link: Optional[str] = None
 
     class Config:
         orm_mode = True 

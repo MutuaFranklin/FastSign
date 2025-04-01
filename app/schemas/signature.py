@@ -12,13 +12,13 @@ class SignatureBase(BaseModel):
     signature_type: SignatureType
     signature_data: str  # Base64 encoded data or path to the signature file
 
-class SignatureCreate(SignatureBase):
-    document_id: int  # ID of the document to which the signature belongs
-
-class SignatureResponse(SignatureBase):
-    id: int
-    user_id: int
+class SignatureCreate(BaseModel):
     document_id: int
+    signature_type: SignatureType
+    signature_data: str  # Path to the signature image
+
+class SignatureResponse(SignatureCreate):
+    id: int
     created_at: datetime
 
     class Config:
