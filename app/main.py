@@ -1,10 +1,10 @@
 from fastapi import FastAPI, Depends
 from fastapi.middleware.cors import CORSMiddleware
 from sqlalchemy.orm import Session
-from app.routers import auth, documents
+from app.routers import auth, documents, signatures  # Import signatures router
 from app.database import Base, engine, get_db
 from fastapi.responses import RedirectResponse
-from app.models import user, document  # Import models
+from app.models import user, document, signature  # Import models
 
 # Create database tables
 Base.metadata.create_all(bind=engine)
@@ -20,9 +20,10 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# Include only auth router for now
+# Include routers
 app.include_router(auth.router, prefix="/auth", tags=["Authentication"])
 app.include_router(documents.router, prefix="/documents", tags=["Documents"])
+app.include_router(signatures.router, prefix="/signatures", tags=["Signatures"])
 
 @app.get("/", include_in_schema=False)
 async def root():

@@ -16,3 +16,5 @@ class User(Base):
     # Add relationship
     documents = relationship("Document", back_populates="user")
     signatures = relationship("Signature", back_populates="user") 
+
+    

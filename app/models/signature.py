@@ -1,4 +1,4 @@
-from sqlalchemy import Column, Integer, String, DateTime, ForeignKey, Enum as SQLEnum
+from sqlalchemy import Column, Integer, String, DateTime, ForeignKey, Enum as SQLEnum,Text
 from sqlalchemy.orm import relationship
 from datetime import datetime
 from enum import Enum as PyEnum
@@ -16,7 +16,7 @@ class Signature(Base):
     user_id = Column(Integer, ForeignKey("users.id"))
     document_id = Column(Integer, ForeignKey("documents.id"))
     signature_type = Column(SQLEnum(SignatureType))
-    signature_data = Column(String(1000000))  # Base64 encoded data
+    signature_data = Column(Text)  # Base64 encoded data
     created_at = Column(DateTime, default=datetime.now)
 
     user = relationship("User", back_populates="signatures")
