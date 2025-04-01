@@ -18,29 +18,6 @@ FastSign allows users to:
 - **File Processing**: PyPDF2, Pillow
 - **Development Environment**: Laragon
 
-## Project Structure
-FastSign/
-├── app/
-│ ├── models/
-│ │ ├── user.py # User authentication and profile
-│ │ ├── document.py # Document management
-│ │ └── signature.py # Digital signatures
-│ ├── routers/
-│ │ ├── auth.py # Authentication routes
-│ │ ├── documents.py # Document handling
-│ │ └── signatures.py # Signature operations
-│ ├── services/
-│ │ └── auth.py # Authentication logic
-│ ├── schemas/
-│ │ ├── user.py # User data validation
-│ │ └── document.py # Document data validation
-│ ├── database.py # Database configuration
-│ ├── config.py # Application settings
-│ └── main.py # Application entry point
-├── requirements.txt
-├── .env
-└── README.md
-```
 
 ## API Endpoints
 
