@@ -139,4 +139,4 @@ The application will be available at:
 
 ## License
 
-MIT License - Test update test buana
+MIT License
