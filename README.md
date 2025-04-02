@@ -28,11 +28,21 @@ FastSign allows users to:
 ### Documents
 - `POST /documents/upload` - Upload new document
 - `GET /documents/list` - List user's documents
-- `GET /documents/public/{access_token}` - Access document via public link
+- `GET /documents/metadata/{access_token}` - Retrieve metadata for a document using its access token
+- `GET /documents/view/{access_token}` - View the document directly (signed if available, otherwise the original)
 
 ### Signatures
-- `POST /signatures/create` - Create new signature
-- `GET /signatures/list` - List user's signatures
+- `POST /signatures/add-signature/` - Create new signature
+  - **Request Body**: 
+    ```json
+    {
+      "document_id": 1,
+      "signature_type": "drawn",
+      "signature_data": "path/to/signature/image.png"
+    }
+    ```
+  - **Response**: Returns the created signature details.
+
 
 ## Setup Instructions
 
@@ -129,4 +139,4 @@ The application will be available at:
 
 ## License
 
-MIT License
+MIT License - Test update test buana
